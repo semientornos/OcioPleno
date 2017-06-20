@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-may-2017 0:42:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ociopleno.Participa" table="participa" catalog="ociopleno" optimistic-lock="version">
+        <composite-id name="id" class="ociopleno.ParticipaId">
+            <key-property name="idc" type="int">
+                <column name="idc" />
+            </key-property>
+            <key-property name="ida" type="int">
+                <column name="ida" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="actividad" class="ociopleno.Actividad" update="false" insert="false" fetch="select">
+            <column name="ida" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cliente" class="ociopleno.Cliente" update="false" insert="false" fetch="select">
+            <column name="idc" not-null="true" />
+        </many-to-one>
+        <property name="responsable" type="java.lang.Byte">
+            <column name="responsable" />
+        </property>
+        <property name="cumple" type="java.lang.Byte">
+            <column name="cumple" />
+        </property>
+    </class>
+</hibernate-mapping>

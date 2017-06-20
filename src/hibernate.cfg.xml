@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://falconmillan.es:3306/ociopleno</property>
+    <property name="hibernate.connection.username">semi</property>
+    <property name="hibernate.connection.password">acces0</property>
+    <mapping resource="ociopleno/Multimedia.hbm.xml"/>
+    <mapping resource="ociopleno/Actividad.hbm.xml"/>
+    <mapping resource="ociopleno/Aficiones.hbm.xml"/>
+    <mapping resource="ociopleno/Participa.hbm.xml"/>
+    <mapping resource="ociopleno/Cliente.hbm.xml"/>
+    <mapping resource="ociopleno/Catalogo.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

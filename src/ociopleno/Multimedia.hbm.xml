@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-may-2017 0:42:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ociopleno.Multimedia" table="multimedia" catalog="ociopleno" optimistic-lock="version">
+        <id name="nombreArchivo" type="string">
+            <column name="nombreArchivo" length="100" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="actividad" class="ociopleno.Actividad" fetch="select">
+            <column name="ida" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

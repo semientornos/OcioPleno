@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-may-2017 0:42:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ociopleno.Actividad" table="actividad" catalog="ociopleno" optimistic-lock="version">
+        <id name="ida" type="int">
+            <column name="ida" />
+            <generator class="assigned" />
+        </id>
+        <property name="estado" type="java.lang.Byte">
+            <column name="estado" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" unique="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" />
+        </property>
+        <property name="edadMinima" type="java.lang.Integer">
+            <column name="edadMinima" />
+        </property>
+        <property name="edadMaxima" type="java.lang.Integer">
+            <column name="edadMaxima" />
+        </property>
+        <property name="sexo" type="java.lang.Character">
+            <column name="sexo" length="1" />
+        </property>
+        <property name="lugar" type="string">
+            <column name="lugar" length="100" />
+        </property>
+        <set name="multimedias" table="multimedia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ida" />
+            </key>
+            <one-to-many class="ociopleno.Multimedia" />
+        </set>
+        <set name="aficioneses" table="requiere" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="ida" not-null="true" />
+            </key>
+            <many-to-many entity-name="ociopleno.Aficiones">
+                <column name="aficiones" length="45" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="participas" table="participa" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ida" not-null="true" />
+            </key>
+            <one-to-many class="ociopleno.Participa" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="ociopleno"/>
+  <table-filter match-name="multimedia"/>
+  <table-filter match-name="participa"/>
+  <table-filter match-name="cliente"/>
+  <table-filter match-name="tieneAficiones"/>
+  <table-filter match-name="requiere"/>
+  <table-filter match-name="catalogo"/>
+  <table-filter match-name="aficiones"/>
+  <table-filter match-name="actividad"/>
+</hibernate-reverse-engineering>

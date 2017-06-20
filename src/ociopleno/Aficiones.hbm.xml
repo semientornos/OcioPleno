@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-may-2017 0:42:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ociopleno.Aficiones" table="aficiones" catalog="ociopleno" optimistic-lock="version">
+        <id name="aficiones" type="string">
+            <column name="aficiones" length="45" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="catalogo" class="ociopleno.Catalogo" fetch="select">
+            <column name="catalogo" length="45" />
+        </many-to-one>
+        <set name="clientes" table="tieneAficiones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="aficiones" length="45" not-null="true" />
+            </key>
+            <many-to-many entity-name="ociopleno.Cliente">
+                <column name="idc" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="actividads" table="requiere" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="aficiones" length="45" not-null="true" />
+            </key>
+            <many-to-many entity-name="ociopleno.Actividad">
+                <column name="ida" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
