@@ -5,6 +5,7 @@
  */
 package ociopleno;
 
+import java.awt.Frame;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -142,7 +143,7 @@ public class Actividades extends javax.swing.JDialog {
             objeto[0] = actividad.getNombre();
             objeto[1] = fecha;
             objeto[2] = actividad.getLugar();
-            objeto[3] = actividad.getEstado();
+            objeto[3] = (actividad.getEstado() == 0)? "No realizada" : "Realizada";
 
             for (int i = 0; i < objeto.length; i++) {
                 if (objeto[i] == null) {
@@ -155,6 +156,24 @@ public class Actividades extends javax.swing.JDialog {
             tablaActividades.setModel(modelo);
             
         }
+        
+        // Añadido por Alesander
+        tablaActividades.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = tablaActividades.rowAtPoint(evt.getPoint());
+                int col = tablaActividades.columnAtPoint(evt.getPoint());
+                if (row >= 0 && col >= 0) {
+                    System.out.println("Row:" + row + " -- " + "Col" + col );
+                    System.out.println("Actividad:" + tablaActividades.getValueAt(row, 0).toString());
+                    
+                    DetallesActividades detalles = new DetallesActividades((Frame) getParent(), true);
+                    detalles.setActividad(tablaActividades.getValueAt(row, 0).toString());
+                    detalles.setModal(true);
+                    detalles.setVisible(true);
+                }
+            }
+        });
         return modelo;
     }
     
@@ -189,7 +208,7 @@ public class Actividades extends javax.swing.JDialog {
             objeto[3] = actividad.getEdadMinima();
             objeto[4] = actividad.getEdadMaxima();
             objeto[5] = actividad.getSexo();
-            objeto[6] = actividad.getEstado();            
+            objeto[6] = (actividad.getEstado() == 0)? "No realizada" : "Realizada";          
             //objeto[3] = actividad.getDescripcion();            
             
             for (int i = 0; i < objeto.length; i++) {
